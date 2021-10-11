@@ -1,0 +1,14 @@
+MVP do it wrong, hardcode for me...
+
+hilt
+room
+numberpicker
+slide button
+...
+github
+release to play store
+
+####future
+min, max and default reps setting
+graphs
+make these github issues
