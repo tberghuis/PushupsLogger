@@ -1,0 +1,10 @@
+adb devices
+adb -s emulator-5554 shell
+
+run-as xyz.tberghuis.pushupslogger
+cd /data/data/xyz.tberghuis.pushupslogger/databases/
+
+ls -la
+
+sqlite3 rep.db
+select * from rep;
