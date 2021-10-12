@@ -1,5 +1,7 @@
 MVP do it wrong, hardcode for me...
 
+copy from latest mylists
+
 hilt
 room
 numberpicker
