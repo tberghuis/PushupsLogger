@@ -1,6 +1,6 @@
 button insert single rep now
 
-kotlin current timestamp UTC
+kotlin current timestamp UTC, milliseconds since epoch
 
 ############################
 MVP do it wrong, hardcode for me...
