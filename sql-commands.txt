@@ -11,3 +11,5 @@ select * from rep;
 
 
 delete from rep;
+
+.schema rep

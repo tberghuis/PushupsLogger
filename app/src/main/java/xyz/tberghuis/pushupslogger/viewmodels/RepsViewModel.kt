@@ -10,7 +10,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class RepsViewModel @Inject constructor(
-  private val repDao: RepDao
+  val repDao: RepDao
 ) : ViewModel() {
 
   fun insertReps(numReps: String) {

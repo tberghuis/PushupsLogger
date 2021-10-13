@@ -12,6 +12,8 @@ import androidx.compose.ui.text.input.TextFieldValue
 import androidx.hilt.navigation.compose.hiltViewModel
 import xyz.tberghuis.pushupslogger.viewmodels.RepsViewModel
 import android.util.StatsLog.logEvent
+import androidx.compose.foundation.layout.Row
+import androidx.compose.runtime.collectAsState
 import java.text.DateFormat
 import java.text.SimpleDateFormat
 import java.util.*
@@ -27,10 +29,16 @@ fun RepsScreen(
 
   // to put in vm
   val numReps = remember { mutableStateOf("") }
+  val todaysTotal = viewModel.repDao.getTodaysTotal().collectAsState(initial = 0)
 
 
   Column {
-    Text("todays total: ")
+    Row {
+      Text("todays total: ")
+//      Text(if (todaysTotal.value == null) "null" else "not null")
+      Text(todaysTotal.value.toString())
+    }
+
 
     TextField(
       value = numReps.value,
