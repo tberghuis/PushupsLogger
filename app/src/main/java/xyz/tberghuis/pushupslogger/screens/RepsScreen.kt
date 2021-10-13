@@ -117,14 +117,16 @@ fun NumberPickerWrapper(viewModel: RepsViewModel = hiltViewModel()) {
 }
 
 @Composable
-fun SlideToActViewWrapper() {
+fun SlideToActViewWrapper(viewModel: RepsViewModel = hiltViewModel()) {
   AndroidView(factory = { context ->
     SlideToActView(context).apply {
       text = "Log Reps"
-//      val slider = this
+
       // i thought there would be a more kotliny way to do this???
+      // could be because the var is nullable???
       onSlideCompleteListener = object : SlideToActView.OnSlideCompleteListener {
         override fun onSlideComplete(view: SlideToActView) {
+          viewModel.insertReps()
           view.resetSlider()
         }
       }
