@@ -19,6 +19,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.viewinterop.AndroidView
+import com.ncorti.slidetoact.SlideToActView
 import java.text.DateFormat
 import java.text.SimpleDateFormat
 import java.util.*
@@ -74,6 +75,8 @@ fun RepsScreen(
       Text("log reps")
     }
 
+    SlideToActViewWrapper()
+
     TmpButton()
   }
 }
@@ -111,4 +114,21 @@ fun NumberPickerWrapper(viewModel: RepsViewModel = hiltViewModel()) {
       it.value = viewModel.numReps.value
     }
   )
+}
+
+@Composable
+fun SlideToActViewWrapper() {
+  AndroidView(factory = { context ->
+    SlideToActView(context).apply {
+      text = "Log Reps"
+//      val slider = this
+      // i thought there would be a more kotliny way to do this???
+      onSlideCompleteListener = object : SlideToActView.OnSlideCompleteListener {
+        override fun onSlideComplete(view: SlideToActView) {
+          view.resetSlider()
+        }
+      }
+
+    }
+  })
 }
