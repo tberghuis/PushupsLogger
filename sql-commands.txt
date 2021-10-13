@@ -8,3 +8,6 @@ ls -la
 
 sqlite3 rep.db
 select * from rep;
+
+
+delete from rep;

@@ -1,3 +1,9 @@
+
+MVP with basic texfield and button
+next task, todays total
+
+##########################
+
 button insert single rep now
 
 kotlin current timestamp UTC, milliseconds since epoch

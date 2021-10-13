@@ -13,10 +13,21 @@ class RepsViewModel @Inject constructor(
   private val repDao: RepDao
 ) : ViewModel() {
 
-  fun insertReps() {
-    viewModelScope.launch {
-      val rep = Rep(numRep = 1, createdAt = 1)
-      repDao.insert(rep)
+  fun insertReps(numReps: String) {
+
+    try {
+      val numRepsInt = numReps.toInt()
+      val createdAt = System.currentTimeMillis()
+      viewModelScope.launch {
+        val rep = Rep(numRep = numRepsInt, createdAt = createdAt)
+        repDao.insert(rep)
+      }
+
+
+    } catch (e: Exception) {
+
     }
+
+
   }
 }
