@@ -3,42 +3,23 @@ package xyz.tberghuis.pushupslogger.screens
 import android.util.Log
 import androidx.compose.material.Button
 import androidx.compose.material.Text
-import androidx.compose.material.TextField
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.ui.text.input.TextFieldValue
 import androidx.hilt.navigation.compose.hiltViewModel
 import xyz.tberghuis.pushupslogger.viewmodels.RepsViewModel
-import android.util.StatsLog.logEvent
 import android.widget.NumberPicker
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
 import com.ncorti.slidetoact.SlideToActView
-
-import java.text.DateFormat
-import java.text.SimpleDateFormat
 import java.time.*
-
-
-import java.util.*
-
 
 @Composable
 fun RepsScreen(
-
-//  viewModel: RepsViewModel = hiltViewModel(),
   viewModel: RepsViewModel = hiltViewModel(),
-
-  ) {
-
+) {
   val todaysTotal = viewModel.getTodaysTotal().collectAsState(initial = 0)
 
   Column(
@@ -70,26 +51,11 @@ fun RepsScreen(
       }
     }
 
-
     SlideToActViewWrapper()
-
 
     Tmp2Button()
   }
 }
-
-//@Composable
-//fun TmpButton() {
-//  Button(onClick = {
-//    val date = Date(1634083200000)
-//    val formatter: DateFormat = SimpleDateFormat("HH:mm:ss.SSS", Locale.getDefault())
-//    formatter.timeZone = TimeZone.getTimeZone("Australia/NSW")
-//    val dateFormatted: String = formatter.format(date)
-//    Log.d("xxx", "date formatted $dateFormatted")
-//  }) {
-//    Text("tmp button")
-//  }
-//}
 
 
 @Composable
@@ -133,6 +99,10 @@ fun SlideToActViewWrapper(viewModel: RepsViewModel = hiltViewModel()) {
 }
 
 
+
+
+//////////////////////////////// tmp code below
+
 @Composable
 fun Tmp2Button() {
   Button(onClick = {
@@ -146,3 +116,16 @@ fun Tmp2Button() {
     Text("tmp2 button")
   }
 }
+
+//@Composable
+//fun TmpButton() {
+//  Button(onClick = {
+//    val date = Date(1634083200000)
+//    val formatter: DateFormat = SimpleDateFormat("HH:mm:ss.SSS", Locale.getDefault())
+//    formatter.timeZone = TimeZone.getTimeZone("Australia/NSW")
+//    val dateFormatted: String = formatter.format(date)
+//    Log.d("xxx", "date formatted $dateFormatted")
+//  }) {
+//    Text("tmp button")
+//  }
+//}
