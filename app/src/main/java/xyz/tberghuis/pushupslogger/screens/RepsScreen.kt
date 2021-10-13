@@ -1,7 +1,6 @@
 package xyz.tberghuis.pushupslogger.screens
 
 import android.util.Log
-import androidx.compose.foundation.layout.Column
 import androidx.compose.material.Button
 import androidx.compose.material.Text
 import androidx.compose.material.TextField
@@ -13,11 +12,14 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import xyz.tberghuis.pushupslogger.viewmodels.RepsViewModel
 import android.util.StatsLog.logEvent
 import android.widget.NumberPicker
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
 import com.ncorti.slidetoact.SlideToActView
 import java.text.DateFormat
@@ -33,23 +35,20 @@ fun RepsScreen(
 
   ) {
 
-  // to put in vm
-//  val numReps = remember { mutableStateOf("") }
   val todaysTotal = viewModel.repDao.getTodaysTotal().collectAsState(initial = 0)
 
-
-  Column {
+  Column(
+    modifier = Modifier
+//      .background(Color(0xFF7BB661))
+      .fillMaxSize()
+      .padding(10.dp),
+    horizontalAlignment = Alignment.CenterHorizontally,
+    verticalArrangement = Arrangement.Center
+  ) {
     Row {
       Text("todays total: ")
-//      Text(if (todaysTotal.value == null) "null" else "not null")
       Text(todaysTotal.value.toString())
     }
-
-
-//    TextField(
-//      value = numReps.value,
-//      onValueChange = { numReps.value = it }
-//    )
 
     Row(verticalAlignment = Alignment.CenterVertically) {
       Button(onClick = {
@@ -67,13 +66,6 @@ fun RepsScreen(
       }
     }
 
-
-    Button(onClick = {
-      Log.d("xxx", "button clicked")
-      viewModel.insertReps()
-    }) {
-      Text("log reps")
-    }
 
     SlideToActViewWrapper()
 
