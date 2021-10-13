@@ -12,8 +12,13 @@ import androidx.compose.ui.text.input.TextFieldValue
 import androidx.hilt.navigation.compose.hiltViewModel
 import xyz.tberghuis.pushupslogger.viewmodels.RepsViewModel
 import android.util.StatsLog.logEvent
+import android.widget.NumberPicker
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.runtime.collectAsState
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.viewinterop.AndroidView
 import java.text.DateFormat
 import java.text.SimpleDateFormat
 import java.util.*
@@ -28,7 +33,7 @@ fun RepsScreen(
   ) {
 
   // to put in vm
-  val numReps = remember { mutableStateOf("") }
+//  val numReps = remember { mutableStateOf("") }
   val todaysTotal = viewModel.repDao.getTodaysTotal().collectAsState(initial = 0)
 
 
@@ -40,15 +45,31 @@ fun RepsScreen(
     }
 
 
-    TextField(
-      value = numReps.value,
-      onValueChange = { numReps.value = it }
-    )
+//    TextField(
+//      value = numReps.value,
+//      onValueChange = { numReps.value = it }
+//    )
+
+    Row(verticalAlignment = Alignment.CenterVertically) {
+      Button(onClick = {
+        if (viewModel.numReps.value > 1)
+          viewModel.numReps.value--
+      }) {
+        Text("-")
+      }
+      NumberPickerWrapper()
+      Button(onClick = {
+        if (viewModel.numReps.value < 10)
+          viewModel.numReps.value++
+      }) {
+        Text("+")
+      }
+    }
 
 
     Button(onClick = {
       Log.d("xxx", "button clicked")
-      viewModel.insertReps(numReps.value)
+      viewModel.insertReps()
     }) {
       Text("log reps")
     }
@@ -68,4 +89,26 @@ fun TmpButton() {
   }) {
     Text("tmp button")
   }
+}
+
+
+@Composable
+fun NumberPickerWrapper(viewModel: RepsViewModel = hiltViewModel()) {
+  AndroidView(
+//    modifier = Modifier.fillMaxWidth(),
+    factory = { context ->
+      NumberPicker(context).apply {
+        setOnValueChangedListener { picker, oldVal, newVal ->
+          viewModel.numReps.value = newVal
+        }
+        minValue = 1
+        maxValue = 10
+        value = viewModel.numReps.value
+      }
+    },
+    update = {
+      // todo animate the update
+      it.value = viewModel.numReps.value
+    }
+  )
 }

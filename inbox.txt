@@ -2,6 +2,10 @@
 MVP with basic texfield and button
 next task, todays total
 
+fix todaysTotal, only date > midnight last night
+
+slide to act...
+
 ##########################
 
 button insert single rep now

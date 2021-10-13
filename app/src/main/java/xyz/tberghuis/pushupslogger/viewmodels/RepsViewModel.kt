@@ -1,5 +1,6 @@
 package xyz.tberghuis.pushupslogger.viewmodels
 
+import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -13,13 +14,16 @@ class RepsViewModel @Inject constructor(
   val repDao: RepDao
 ) : ViewModel() {
 
-  fun insertReps(numReps: String) {
+  // todo default value
+  val numReps = mutableStateOf(5)
+
+  fun insertReps() {
 
     try {
-      val numRepsInt = numReps.toInt()
+
       val createdAt = System.currentTimeMillis()
       viewModelScope.launch {
-        val rep = Rep(numRep = numRepsInt, createdAt = createdAt)
+        val rep = Rep(numRep = numReps.value, createdAt = createdAt)
         repDao.insert(rep)
       }
 
