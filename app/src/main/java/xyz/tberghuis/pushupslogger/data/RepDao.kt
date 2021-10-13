@@ -14,7 +14,13 @@ interface RepDao {
   suspend fun insert(rep: Rep)
 
 
-  @Query("SELECT TOTAL(numRep) FROM rep WHERE createdAt >= :midnight")
-  fun getTodaysTotal(midnight: Long): Flow<Int>
+  @Query("SELECT TOTAL(numRep) FROM rep WHERE createdAt >= :todayStartOfDay")
+  fun getTodaysTotal(todayStartOfDay: Long): Flow<Int>
+
+  @Query(
+    """SELECT TOTAL(numRep) FROM rep WHERE createdAt >= :yesterdayStartOfDay 
+    AND createdAt < :todayStartOfDay"""
+  )
+  fun getYesterdaysTotal(yesterdayStartOfDay: Long, todayStartOfDay: Long): Flow<Int>
 
 }

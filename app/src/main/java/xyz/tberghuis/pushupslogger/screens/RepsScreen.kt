@@ -21,6 +21,7 @@ fun RepsScreen(
   viewModel: RepsViewModel = hiltViewModel(),
 ) {
   val todaysTotal = viewModel.getTodaysTotal().collectAsState(initial = 0)
+  val yesterdaysTotal = viewModel.getYesterdaysTotal().collectAsState(initial = 0)
 
   Column(
     modifier = Modifier
@@ -30,6 +31,12 @@ fun RepsScreen(
     horizontalAlignment = Alignment.CenterHorizontally,
     verticalArrangement = Arrangement.Center
   ) {
+
+    Row {
+      Text("yesterdays total: ")
+      Text(yesterdaysTotal.value.toString())
+    }
+
     Row {
       Text("todays total: ")
       Text(todaysTotal.value.toString())
@@ -97,8 +104,6 @@ fun SlideToActViewWrapper(viewModel: RepsViewModel = hiltViewModel()) {
     }
   })
 }
-
-
 
 
 //////////////////////////////// tmp code below
