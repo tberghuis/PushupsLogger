@@ -22,8 +22,12 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
 import com.ncorti.slidetoact.SlideToActView
+
 import java.text.DateFormat
 import java.text.SimpleDateFormat
+import java.time.*
+
+
 import java.util.*
 
 
@@ -35,7 +39,7 @@ fun RepsScreen(
 
   ) {
 
-  val todaysTotal = viewModel.repDao.getTodaysTotal().collectAsState(initial = 0)
+  val todaysTotal = viewModel.getTodaysTotal().collectAsState(initial = 0)
 
   Column(
     modifier = Modifier
@@ -69,22 +73,23 @@ fun RepsScreen(
 
     SlideToActViewWrapper()
 
-    TmpButton()
+
+    Tmp2Button()
   }
 }
 
-@Composable
-fun TmpButton() {
-  Button(onClick = {
-    val date = Date(1634083654409)
-    val formatter: DateFormat = SimpleDateFormat("HH:mm:ss.SSS", Locale.getDefault())
-    formatter.timeZone = TimeZone.getTimeZone("Australia/NSW")
-    val dateFormatted: String = formatter.format(date)
-    Log.d("xxx", "date formatted $dateFormatted")
-  }) {
-    Text("tmp button")
-  }
-}
+//@Composable
+//fun TmpButton() {
+//  Button(onClick = {
+//    val date = Date(1634083200000)
+//    val formatter: DateFormat = SimpleDateFormat("HH:mm:ss.SSS", Locale.getDefault())
+//    formatter.timeZone = TimeZone.getTimeZone("Australia/NSW")
+//    val dateFormatted: String = formatter.format(date)
+//    Log.d("xxx", "date formatted $dateFormatted")
+//  }) {
+//    Text("tmp button")
+//  }
+//}
 
 
 @Composable
@@ -125,4 +130,19 @@ fun SlideToActViewWrapper(viewModel: RepsViewModel = hiltViewModel()) {
 
     }
   })
+}
+
+
+@Composable
+fun Tmp2Button() {
+  Button(onClick = {
+    val today: LocalDate = LocalDate.now()
+    val startOfDay: LocalDateTime = today.atStartOfDay()
+    val midnight = startOfDay.toInstant(ZoneOffset.systemDefault().rules.getOffset(startOfDay))
+    val midnightMilli = midnight.toEpochMilli()
+
+    Log.d("xxx", "midnightMilli $midnightMilli ${System.currentTimeMillis()}")
+  }) {
+    Text("tmp2 button")
+  }
 }
