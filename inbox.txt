@@ -1,39 +1,10 @@
+settings page: min, max, default reps
 
-settings page, min amx default reps
+cull old github pushups projects
 
 log page, showing graphs
   max consecutive daily
   total daily
   ...
 
-##############################
-MVP with basic texfield and button
-next task, todays total
-
-fix todaysTotal, only date > midnight last night
-
-slide to act...
-
-##########################
-
-button insert single rep now
-
-kotlin current timestamp UTC, milliseconds since epoch
-
-############################
-MVP do it wrong, hardcode for me...
-
-copy from latest mylists
-
-hilt
-room
-numberpicker
-slide button
-...
-github
 release to play store
-
-####future
-min, max and default reps setting
-graphs
-make these github issues
