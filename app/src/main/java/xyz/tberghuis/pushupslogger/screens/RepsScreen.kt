@@ -1,6 +1,5 @@
 package xyz.tberghuis.pushupslogger.screens
 
-import android.util.Log
 import androidx.compose.material.Button
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -8,13 +7,13 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import xyz.tberghuis.pushupslogger.viewmodels.RepsViewModel
 import android.widget.NumberPicker
 import androidx.compose.foundation.layout.*
+import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
 import com.ncorti.slidetoact.SlideToActView
-import java.time.*
 
 @Composable
 fun RepsScreen(
@@ -25,24 +24,24 @@ fun RepsScreen(
 
   Column(
     modifier = Modifier
-//      .background(Color(0xFF7BB661))
       .fillMaxSize()
       .padding(10.dp),
     horizontalAlignment = Alignment.CenterHorizontally,
-    verticalArrangement = Arrangement.Center
+    verticalArrangement = Arrangement.SpaceEvenly
   ) {
-
     Row {
       Text("yesterdays total: ")
       Text(yesterdaysTotal.value.toString())
     }
-
     Row {
       Text("todays total: ")
       Text(todaysTotal.value.toString())
     }
-
-    Row(verticalAlignment = Alignment.CenterVertically) {
+    Row(
+      modifier = Modifier.fillMaxWidth(),
+      verticalAlignment = Alignment.CenterVertically,
+      horizontalArrangement = Arrangement.SpaceEvenly
+    ) {
       Button(onClick = {
         if (viewModel.numReps.value > 1)
           viewModel.numReps.value--
@@ -57,10 +56,7 @@ fun RepsScreen(
         Text("+")
       }
     }
-
     SlideToActViewWrapper()
-
-    Tmp2Button()
   }
 }
 
@@ -68,7 +64,6 @@ fun RepsScreen(
 @Composable
 fun NumberPickerWrapper(viewModel: RepsViewModel = hiltViewModel()) {
   AndroidView(
-//    modifier = Modifier.fillMaxWidth(),
     factory = { context ->
       NumberPicker(context).apply {
         setOnValueChangedListener { picker, oldVal, newVal ->
@@ -77,6 +72,7 @@ fun NumberPickerWrapper(viewModel: RepsViewModel = hiltViewModel()) {
         minValue = 1
         maxValue = 10
         value = viewModel.numReps.value
+        wrapSelectorWheel = false
       }
     },
     update = {
@@ -88,10 +84,15 @@ fun NumberPickerWrapper(viewModel: RepsViewModel = hiltViewModel()) {
 
 @Composable
 fun SlideToActViewWrapper(viewModel: RepsViewModel = hiltViewModel()) {
+
+  // i don't know how this works but it does
+  val primaryThemeColor = MaterialTheme.colors.primary.hashCode()
+
   AndroidView(factory = { context ->
     SlideToActView(context).apply {
       text = "Log Reps"
-
+      outerColor = primaryThemeColor
+      iconColor = primaryThemeColor
       // i thought there would be a more kotliny way to do this???
       // could be because the var is nullable???
       onSlideCompleteListener = object : SlideToActView.OnSlideCompleteListener {
@@ -100,37 +101,6 @@ fun SlideToActViewWrapper(viewModel: RepsViewModel = hiltViewModel()) {
           view.resetSlider()
         }
       }
-
     }
   })
 }
-
-
-//////////////////////////////// tmp code below
-
-@Composable
-fun Tmp2Button() {
-  Button(onClick = {
-    val today: LocalDate = LocalDate.now()
-    val startOfDay: LocalDateTime = today.atStartOfDay()
-    val midnight = startOfDay.toInstant(ZoneOffset.systemDefault().rules.getOffset(startOfDay))
-    val midnightMilli = midnight.toEpochMilli()
-
-    Log.d("xxx", "midnightMilli $midnightMilli ${System.currentTimeMillis()}")
-  }) {
-    Text("tmp2 button")
-  }
-}
-
-//@Composable
-//fun TmpButton() {
-//  Button(onClick = {
-//    val date = Date(1634083200000)
-//    val formatter: DateFormat = SimpleDateFormat("HH:mm:ss.SSS", Locale.getDefault())
-//    formatter.timeZone = TimeZone.getTimeZone("Australia/NSW")
-//    val dateFormatted: String = formatter.format(date)
-//    Log.d("xxx", "date formatted $dateFormatted")
-//  }) {
-//    Text("tmp button")
-//  }
-//}
