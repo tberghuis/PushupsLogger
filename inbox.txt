@@ -1,4 +1,12 @@
 
+settings page, min amx default reps
+
+log page, showing graphs
+  max consecutive daily
+  total daily
+  ...
+
+##############################
 MVP with basic texfield and button
 next task, todays total
 
