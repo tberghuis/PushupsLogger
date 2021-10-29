@@ -24,6 +24,11 @@ https://www.reddit.com/r/GoogleAssistantDev/comments/qi39w7/when_will_the_androi
 
 https://stackoverflow.com/questions/69735013/why-app-actions-test-tool-not-support-shortcuts-xml-file/69763215#69763215
 
+
+got it to work
+
+log X push-ups in "APP NAME"
+
 #############################
 
 settings page: min, max, default reps
