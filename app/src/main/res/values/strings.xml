@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Pushups Logger</string>
     <string-array name="LogPushupsQueries">
-        <item>log $number1 push ups</item>
+        <item>log $number1 push-ups</item>
+        <item>will it blend $number1</item>
     </string-array>
 </resources>
