@@ -1,4 +1,12 @@
 
+list of hurdles
+ play store console bullshit
+
+app shortcuts is in beta so thats probably why i can't test that shit properly
+
+
+https://tberghuis.github.io/PushupsLogger/privacy-policy.html
+
 Add 10 to pushups logger
 
 log X push ups
