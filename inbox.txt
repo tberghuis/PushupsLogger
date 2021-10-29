@@ -29,6 +29,12 @@ got it to work
 
 log X push-ups in "APP NAME"
 
+alternatives
+
+open "APP NAME" and log X push-ups
+
+is there a way to have a shortcut just run a job, without intent show UI, or just show a toast or snackbar
+
 #############################
 
 settings page: min, max, default reps
