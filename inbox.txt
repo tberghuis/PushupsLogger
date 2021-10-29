@@ -19,6 +19,11 @@ when will app shortcuts be out of beta?
 
 https://support.google.com/actions-console/contact/support
 
+
+https://www.reddit.com/r/GoogleAssistantDev/comments/qi39w7/when_will_the_android_shortcuts_framework_be_out/
+
+https://stackoverflow.com/questions/69735013/why-app-actions-test-tool-not-support-shortcuts-xml-file/69763215#69763215
+
 #############################
 
 settings page: min, max, default reps
