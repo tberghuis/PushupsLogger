@@ -1,3 +1,10 @@
+
+Add 10 to pushups logger
+
+log X push ups
+
+#############################
+
 settings page: min, max, default reps
 
 cull old github pushups projects

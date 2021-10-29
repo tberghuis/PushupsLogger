@@ -1,22 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
-    <capability android:name="actions.intent.CREATE_THING">
+    <capability
+        android:name="custom.actions.intent.LOG_PUSHUPS"
+        app:queryPatterns="@array/LogPushupsQueries">
         <intent
             android:action="android.intent.action.VIEW"
             android:targetClass="xyz.tberghuis.pushupslogger.MainActivity"
             android:targetPackage="xyz.tberghuis.pushupslogger">
-
+            <url-template android:value="http://pushupslogger.tberghuis.xyz{?reps}" />
             <parameter
-                android:name="thing.name"
-                android:key="name" />
-
-            <parameter
-                android:name="thing.description"
-                android:key="description" />
+                android:name="reps"
+                android:key="reps"
+                android:mimeType="https://schema.org/Number" />
         </intent>
     </capability>
-
 
 </shortcuts>
