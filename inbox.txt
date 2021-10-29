@@ -11,6 +11,14 @@ Add 10 to pushups logger
 
 log X push ups
 
+LogPushupsQueries $number1 ???
+intent parameter name key
+custom intent
+
+when will app shortcuts be out of beta?
+
+https://support.google.com/actions-console/contact/support
+
 #############################
 
 settings page: min, max, default reps
