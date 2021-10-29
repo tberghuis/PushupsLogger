@@ -34,6 +34,8 @@ alternatives
 open "APP NAME" and log X push-ups
 
 is there a way to have a shortcut just run a job, without intent show UI, or just show a toast or snackbar
+workmanager codelab or alarmmanager...
+
 
 #############################
 
