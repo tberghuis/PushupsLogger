@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <capability android:name="actions.intent.CREATE_THING">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetClass="xyz.tberghuis.pushupslogger.MainActivity"
+            android:targetPackage="xyz.tberghuis.pushupslogger">
+
+            <parameter
+                android:name="thing.name"
+                android:key="name" />
+
+            <parameter
+                android:name="thing.description"
+                android:key="description" />
+        </intent>
+    </capability>
+
+
+</shortcuts>
