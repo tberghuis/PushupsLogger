@@ -5,6 +5,10 @@ have a delay, update DB and show a snackbar
 cull old trello boards (pushups)
 
 
+google slices tutorial
+https://github.com/saurabhkpatel/SampleAndroidSlice
+
+
 DO
 https://developer.android.com/codelabs/android-slices-basic?hl=en&continue=https%3A%2F%2Fcodelabs.developers.google.com%2F#0
 
